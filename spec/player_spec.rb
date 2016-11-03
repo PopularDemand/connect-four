@@ -21,26 +21,26 @@ describe Player do
 		end
 
 		it "does not raise an error with parameters passed" do
-			expect{ Player.new(color: "red") }.not_to raise_error
+			expect{ Player.new(symbol: "X") }.not_to raise_error
 		end
 
-		it "saves the color as a public instance vairable" do
-			player = Player.new(color: "red")
-			expect(player.color).to eq("red")
-		end
-
-		it "saves symbol as 'X' if color is red" do
-			player = Player.new(color: "red")
+		it "saves the symbol as a public instance vairable" do
+			player = Player.new(symbol: "X")
 			expect(player.symbol).to eq("X")
 		end
 
-		it "saves symbol as 'O' if color is blue" do
-			player = Player.new(color: "blue")
+		it "saves symbol as 'X' if symbol is X" do
+			player = Player.new(symbol: "X")
+			expect(player.symbol).to eq("X")
+		end
+
+		it "saves symbol as 'O' if symbol is O" do
+			player = Player.new(symbol: "O")
 			expect(player.symbol).to eq("O")
 		end
 
-		xit "raises error if color is not blue or red" do
-			expect{ Player.new(color: "green") }.to raise_error(ArgumentError)
+		it "raises error if symbol is not O or X" do
+			expect{ Player.new(symbol: "?") }.to raise_error(ArgumentError)
 		end
 	end
 

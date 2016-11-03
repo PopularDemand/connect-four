@@ -15,9 +15,9 @@ class Board
   attr_reader :columns
 
   def initialize(args = {})
-    @columns        = args[:board]       || Array.new(7) { Array.new(6) { ' ' }} 
-    @red_positions  = args[:red_coords]  || []
-    @blue_positions = args[:blue_coords] || []
+    @columns        = args[:board]   || Array.new(7) { Array.new(6) { ' ' }} 
+    @x_positions  = args[:x_coords]  || []
+    @o_positions = args[:o_coords]   || []
   end
 
   def add_piece(symbol, col)
@@ -122,6 +122,6 @@ class Board
     end
 
     def player_array(player)
-      player == 'X' ? @red_positions : @blue_positions
+      player == 'X' ? @x_positions : @o_positions
     end
 end

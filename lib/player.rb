@@ -1,11 +1,11 @@
 
 
 class Player
-  attr_reader :color, :symbol
+  attr_reader :symbol
 
   def initialize(attrs)
-    @color = attrs[:color]
-    @symbol = self.color == "red" ? 'X' : 'O'
+    raise ArgumentError unless attrs[:symbol] == 'X' || attrs[:symbol] == 'O'
+    @symbol = attrs[:symbol]
   end
 
   def get_input

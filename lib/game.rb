@@ -15,9 +15,9 @@
 =end
 
 class Game
-  def initialize(player_red:, player_blue:, board:)
-    @player_red = :player_red
-    @player_blue = :player_blue
+  def initialize(player_x:, player_o:, board:)
+    @player_x = :player_x
+    @player_o = :player_o
     @board = :board
     @turn_count = 1 # Odd for red, Even for Blue, at 43 game over
     @win = false
@@ -38,7 +38,7 @@ class Game
     end
   
     def current_player(count)
-      count % 2 == 0 ? @player_blue : @player_red
+      count % 2 == 0 ? @player_o : @player_x
     end
 
     def welcome
