@@ -33,7 +33,7 @@ class Game
     def game_loop
       @board.render
       drop = current_player(@turn_count).get_input
-      @board.add_piece(current_player(@turn_count), drop)
+      @board.add_piece(current_player(@turn_count).symbol, drop)
       check_win
     end
   
