@@ -15,10 +15,10 @@
 =end
 
 class Game
-  def initialize(attr = {})
-    @player_red = attr[:player_red]
-    @player_blue = attr[:player_blue]
-    @board = attr[:board]
+  def initialize(player_red:, player_blue:, board:)
+    @player_red = :player_red
+    @player_blue = :player_blue
+    @board = :board
     @turn_count = 1 # Odd for red, Even for Blue, at 43 game over
     @win = false
   end

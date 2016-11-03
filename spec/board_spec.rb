@@ -60,28 +60,32 @@ describe Board do
   end
 
   describe "#four_in_a_row?" do
-    let(:winning_column_board)   { Board.new(red_coords: [[0,0], [0,1], [0,2], [0,3]]) }
-    let(:winning_row_board)      { Board.new(blue_coords: [[0,0], [1,0], [2,0], [3,0]]) }
-    let(:winning_diagonal_board) { Board.new(blue_coords: [[0,0], [1,1], [2,2], [3,3]]) }
+    let(:winning_column_board)   { Board.new }
+    let(:winning_row_board)      { Board.new(blue_coords: [[0,5], [1,5], [2,5]]) }
+    let(:winning_diagonal_board) { Board.new(blue_coords: [[0,2], [1,3], [2,4]]) }
 
     it "raises error if no symbol passed" do
       expect{ board.four_in_a_row? }.to raise_error(ArgumentError)
     end
 
     it "returns true for column win" do
+      4.times { winning_column_board.add_piece('X', 0) }
       expect(winning_column_board.four_in_a_row? 'X').to be true
     end
 
     it "returns true for row win" do
+      winning_row_board.add_piece('O', 3)
       expect(winning_row_board.four_in_a_row? 'O').to be true
     end
 
     it "returns true for diagonal win" do
+      winning_diagonal_board.add_piece('O', 3)
       expect(winning_diagonal_board.four_in_a_row? 'O').to be true
     end
 
-    it "returns false non-winning board" do
-      expect(board.four_in_a_row?).to be false
+    it "returns false on non-winning board after one piece added" do
+      board.add_piece('X', 0)
+      expect(board.four_in_a_row?('X')).to be false
     end
   end
 end
