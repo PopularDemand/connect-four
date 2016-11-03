@@ -17,7 +17,9 @@ require 'pry'
         x's on the board, same for blue
   #four_in_a_row? - check if the last piece that was played now completes 4 in row
                     for current player
-      SP: if no player given, throws error
+      HP: place winning piece, return true
+        : place non-win, return false
+      SP: if no player given, throws error 
          
             
 =end
@@ -150,5 +152,3 @@ class Board
       player.color == 'red' ? @red_positions : @blue_positions
     end
 end
-
-p Board::DIAGONAL_VECTORS

@@ -26,3 +26,8 @@
 # - player turn logic
 
 # Piece.new(player='player', column)
+
+=begin
+  ConnectFour: sets attr and instantiates Game
+    HP: Instantiates game with given attributes 
+=end
