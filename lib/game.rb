@@ -9,7 +9,9 @@
     #play -
       HP - prints welcome
          - send message game loop
-    # 
+  
+  private interface
+    #game_loop - 
 =end
 
 class Game
@@ -26,14 +28,15 @@ class Game
     game_loop
   end
 
-  def game_loop
-    @board.render
-    drop = current_player(@turn_count).get_input
-    @board.add_piece(current_player(@turn_count), drop)
-    check_win
-  end
-
   private
+
+    def game_loop
+      @board.render
+      drop = current_player(@turn_count).get_input
+      @board.add_piece(current_player(@turn_count), drop)
+      check_win
+    end
+  
     def current_player(count)
       count % 2 == 0 ? @player_blue : @player_red
     end
