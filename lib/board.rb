@@ -21,6 +21,7 @@ class Board
   end
 
   def add_piece(symbol, col)
+    raise ArgumentError unless (0..6).include?(col)
     row = get_row(col)
     @columns[col][row] = symbol if valid_drop?(col)
     position = [col, row]
@@ -41,14 +42,14 @@ class Board
     print "|0|1|2|3|4|5|6|"
   end
 
-  def four_in_a_row?(player)
+  def four_in_a_row?(symbol)
     win_combos = winning_combos(@last_piece)
     puts "last piece: #{@last_piece}" # Debugging
     four_in_a_row = false
     win_combos.each do |direction, win_combo|
       # wincombo is array of array of vectors
       four_in_a_row = win_combo.all? do |position|
-        player_array(player).include? position
+        player_array(symbol).include? position
         binding.pry
       end
       break if four_in_a_row == true
