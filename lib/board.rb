@@ -43,18 +43,13 @@ class Board
   end
 
   def four_in_a_row?(symbol)
-    win_combos = winning_combos(@last_piece)
-    puts "last piece: #{@last_piece}" # Debugging
-    four_in_a_row = false
-    win_combos.each do |direction, win_combo|
-      # wincombo is array of array of vectors
-      four_in_a_row = win_combo.all? do |position|
-        player_array(symbol).include? position
-        binding.pry
+    win_combos = winning_combos(@last_piece)      # Hash of arrays of four coords in a row
+    win_combos.each do |direction, win_combo| # key, value: an array of arrays of four in a row coords
+      win_combo.each do |group_of_four|
+        return true if group_of_four.all? {|position| player_array(symbol).include? position }  
       end
-      break if four_in_a_row == true
     end
-    four_in_a_row
+    false
   end
 
   private
@@ -85,12 +80,13 @@ class Board
     end
 
     def vertical_combos(position)
-      [
+      [[
         position,
         [position[0], (position[1] + 1)],
         [position[0], (position[1] + 2)],
         [position[0], (position[1] + 3)]
-      ]
+      ]]
+      
     end
 
     def horizontal_combos(position)
