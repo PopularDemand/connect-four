@@ -59,7 +59,27 @@ describe Board do
     end
   end
 
-  describe
+  describe "#four_in_a_row?" do
+    let(:winning_column_board)   { Board.new(red_coords: [[0,0], [0,1], [0,2], [0,3]]) }
+    let(:winning_row_board)      { Board.new(red_coords: [[0,0], [1,0], [2,0], [3,0]]) }
+    let(:winning_diagonal_board) { Board.new(red_coords: [[0,0], [1,1], [2,2], [3,3]]) }
+
+    it "returns true for column win" do
+
+    end
+
+    it "returns true for row win" do
+
+    end
+
+    it "returns true for diagonal win" do
+
+    end
+
+    it "returns false non-winning board" do
+
+    end
+  end
 end
 
 =begin
